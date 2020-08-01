@@ -1,10 +1,7 @@
 import { ApolloServer } from "apollo-server-micro";
-import { schema } from "../../apollo/schema";
 import { PrismaClient } from "@prisma/client";
-
-const prismaClient = new PrismaClient();
-
-const apolloServer = new ApolloServer({ schema, context: prismaClient });
+import { schema2 } from "../../apollo/typegraphql";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export const config = {
   api: {
@@ -12,4 +9,17 @@ export const config = {
   },
 };
 
-export default apolloServer.createHandler({ path: "/api/graphql" });
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const prismaClient = new PrismaClient();
+
+  const typeSchema = await schema2();
+
+  const apolloServer = new ApolloServer({
+    schema: typeSchema,
+    context: prismaClient,
+  });
+
+  res.seth;
+
+  return apolloServer.createHandler({ path: "/api/graphql" })(req, res);
+};
