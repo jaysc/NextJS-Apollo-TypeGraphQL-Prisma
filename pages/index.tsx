@@ -5,29 +5,13 @@ import { initializeApollo } from "../apollo/client";
 
 const ViewerQuery = gql`
   query ViewerQuery {
-    viewer {
+    Viewer {
       id
       name
       status
     }
   }
 `;
-
-const Index = () => {
-  const {
-    data: { viewer },
-  } = useQuery(ViewerQuery);
-
-  return (
-    <div>
-      You're signed in as {viewer.name} and you're {viewer.status} goto{" "}
-      <Link href="/about">
-        <a>static</a>
-      </Link>{" "}
-      page.
-    </div>
-  );
-};
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo();
@@ -42,5 +26,26 @@ export async function getStaticProps() {
     },
   };
 }
+
+const Index = () => {
+  const { loading, error, data } = useQuery(ViewerQuery);
+  let viewer;
+
+  if (data) {
+    viewer = data.Viewer;
+  }
+
+  return (
+    <div>
+      {viewer
+        ? `You're signed in as ${viewer.name} and you're ${viewer.status}`
+        : null} goto{" "}
+      <Link href="/about">
+        <a>static</a>
+      </Link>{" "}
+      page.
+    </div>
+  );
+};
 
 export default Index;

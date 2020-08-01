@@ -6,8 +6,10 @@ import {
   Resolver,
   Query,
   ID,
+  Ctx,
 } from "type-graphql";
 import { makeExecutableSchema } from "graphql-tools";
+import { PrismaClient } from "@prisma/client";
 
 @ObjectType()
 class User {
@@ -24,8 +26,9 @@ class User {
 @Resolver(User)
 class UserResolver {
   @Query((returns) => User)
-  Viewer() {
-    return { name: "test" };
+  async Viewer(@Ctx() ctx: PrismaClient) {
+    const result = await ctx.user.findMany();
+    return result[0];
   }
 }
 

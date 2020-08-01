@@ -19,7 +19,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     context: prismaClient,
   });
 
-  res.seth;
-
   return apolloServer.createHandler({ path: "/api/graphql" })(req, res);
 };
