@@ -69,6 +69,14 @@ Lastly, an issue occured where TypeGraphQL could not read the primary types (Str
     "babel-plugin-transform-typescript-metadata",
 ```
 
+## Notes
+
+### typegraphql-prisma
+
+`typegraphql-prisma` gives us the ability to create the relavent typed graphql classes and resolvers to use in our server. This means we can just specify the schema in prisma, and `typegraphql-prisma` will automatically create everything we need to use.
+
+I have chosen not to include it here as I personally rather have full control over my resolvers.
+
 ## References
 
 - https://www.robertcooper.me/migrating-prisma1-to-prisma2
