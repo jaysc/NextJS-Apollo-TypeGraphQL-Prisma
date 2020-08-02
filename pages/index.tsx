@@ -1,7 +1,6 @@
 import gql from "graphql-tag";
-import Link from "next/link";
 import { useQuery } from "@apollo/client";
-import { initializeApollo } from "../apollo/client";
+import { initializeApolloAsync } from "../apollo/client";
 
 const ViewerQuery = gql`
   query ViewerQuery {
@@ -13,8 +12,9 @@ const ViewerQuery = gql`
   }
 `;
 
+//Todo: Caching needs to be fixed here
 export async function getStaticProps() {
-  const apolloClient = initializeApollo();
+  const apolloClient = await initializeApolloAsync();
 
   await apolloClient.query({
     query: ViewerQuery,
@@ -37,13 +37,12 @@ const Index = () => {
 
   return (
     <div>
-      {viewer
-        ? `You're signed in as ${viewer.name} and you're ${viewer.status}`
-        : null} goto{" "}
-      <Link href="/about">
-        <a>static</a>
-      </Link>{" "}
-      page.
+      <p>
+        {viewer
+          ? `You're signed in as ${viewer.name} and you're ${viewer.status}`
+          : "No information"}
+      </p>
+      Go to "api/graphql" for the playground!
     </div>
   );
 };
