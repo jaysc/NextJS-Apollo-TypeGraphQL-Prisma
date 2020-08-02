@@ -4,6 +4,8 @@ A next js app with apollo graphql and prisma.
 
 ## The different steps
 
+![The setup](https://i.imgur.com/TnU4l2W.png)
+
 ### NextJs
 
 NextJs is a react framework that allows you to devlop a seamless front-end and back-end experience. In this case, we can utalise its backend ability to set up our graphql server.
@@ -33,6 +35,10 @@ Prisma allows us to interface with our database. While apollo only handles the l
 GraphQL requires a schema in order to resolve quries. The schema defines the api of your app. This is usually done in a non-typed way within code. TypeGraphQL offers a typed way in order to expose object types and use them around your code.
 
 Their website can be found [here](https://typegraphql.com/).
+
+### typegraphql-prisma
+
+`typegraphql-prisma` gives us the ability to create the relavent typed graphql classes and resolvers to use in our server. This means we can just specify the schema in prisma, and `typegraphql-prisma` will automatically create everything we need to use.
 
 ## The Journey
 
@@ -68,14 +74,6 @@ Lastly, an issue occured where TypeGraphQL could not read the primary types (Str
 ```json
     "babel-plugin-transform-typescript-metadata",
 ```
-
-## Notes
-
-### typegraphql-prisma
-
-`typegraphql-prisma` gives us the ability to create the relavent typed graphql classes and resolvers to use in our server. This means we can just specify the schema in prisma, and `typegraphql-prisma` will automatically create everything we need to use.
-
-I have chosen not to include it here as I personally rather have full control over my resolvers.
 
 ## References
 
