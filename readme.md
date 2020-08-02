@@ -2,6 +2,12 @@
 
 A next js app with apollo graphql and prisma.
 
+## Running
+
+There is already a sql database with example data included.
+
+Make sure you run `npx prisma generate` first in order to generate the definition files.
+
 ## The different steps
 
 ![The setup](https://i.imgur.com/TnU4l2W.png)
@@ -74,6 +80,10 @@ Lastly, an issue occured where TypeGraphQL could not read the primary types (Str
 ```json
     "babel-plugin-transform-typescript-metadata",
 ```
+
+### Setting up typegraphql-prisma
+
+Todo
 
 ## References
 
