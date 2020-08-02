@@ -1,6 +1,6 @@
-# VidyaGet
+# NextJS-Apollo-TypeGraphQL-Prisma
 
-A next js app with apollo graphql and prisma.
+A next js app with apollo, typegraphql and prisma.
 
 ## Running
 
